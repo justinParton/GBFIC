@@ -19,20 +19,22 @@ import vimeo.vimPanel;
 @SuppressWarnings("unused")
 public class vimeoUpload{ 
 	  public static String OS = System.getProperty("os.name"); 
+	  
 	  public static String configFilePath = "config.ini";
 	  JTabbedPane tab;
 	  
 		  public static void main(String[] args){
-			  if(OS != "windows"){
+			  if (OS.startsWith("windows")){
 				  vimeoUpload.configFilePath = ".config.ini";
 			  }
+			  
 			  vimeoUpload ar = new vimeoUpload();
 		  }
 
 		  public vimeoUpload(){
 			  JFrame frame = new JFrame("GBFIC Broadcast Network");
 			  
-			
+			  JOptionPane.showInputDialog(OS);
 			  tab = new JTabbedPane();
 			  frame.add(tab, BorderLayout.CENTER);
 			  
