@@ -30,15 +30,12 @@ class configPanel extends JPanel
 	
 	private JButton clear, exit, submit; 
     private JLabel configheadLabel, configsubHeadLabel, configreqHeadLabel, configVimeoKeyLabel, configVimeoSecretLabel, configvimeoToken1Label, configvimeotoken2Label, configFileDefaultLabel, version; 
-	private JTextField configVimeoKey, configVimeoSecret, configvimeoToken1, configvimeoToken2, configvideoTitle,configFileDefault;
-    public String configFilePath = "config.ini";
-    
-    private static String OS = System.getProperty("os.name");    
-    
+	private JTextField configVimeoKey, configVimeoSecret, configvimeoToken1, configvimeoToken2, configvideoTitle;
+	public JTextField configFileDefault;   
+    private String fileDefault;
     
 public configPanel() 
 {
-	String configFilePath = "config.ini";
   //Text Labels
 	configheadLabel = new JLabel ("Network Configuration");
 	configheadLabel.setFont(new Font("serif", Font.BOLD, 20));
@@ -51,7 +48,7 @@ public configPanel()
 	configvimeoToken1Label = new JLabel ("Token 1: ");
 	configvimeotoken2Label = new JLabel ("Token 2: ");
 	configFileDefaultLabel = new JLabel ("Default Location: ");
-	version = new JLabel ("Version: 1.0 OS: " + OS);
+	version = new JLabel ("Version: 1.0");
 
 	//Text Input Variables
 	configVimeoKey = new JTextField (15);
@@ -61,10 +58,7 @@ public configPanel()
 	configFileDefault = new JTextField (15);
 	Properties props = new Properties();
 	 try {
-		 if(OS != "Windows"){
-			 configFilePath = ".config.ini";
-		 }
-			props.load(new FileReader(configFilePath));
+			props.load(new FileReader(vimeoUpload.configFilePath));
 			 configVimeoKey.setText(props.getProperty("key"));
 			 configVimeoSecret.setText(props.getProperty("secret"));
 			 configvimeoToken1.setText(props.getProperty("token1"));
@@ -235,7 +229,8 @@ public configPanel()
 		      String secretFile = configVimeoSecret.getText();
 		      String token1File = configvimeoToken1.getText();
 		      String token2File = configvimeoToken2.getText();
-		      String fileDefault = configFileDefault.getText();
+		      
+		      fileDefault = configFileDefault.getText().replace("\\", "\\\\");
 		      PrintWriter writer;
 		      if (event.getSource() == submit)
 		      {
@@ -271,10 +266,7 @@ public configPanel()
 			       
 			else {
 				try {
-					if(OS != "windows"){
-					configFilePath = ".config.ini";
-					}
-				    writer = new PrintWriter(configFilePath, "UTF-8");
+				    writer = new PrintWriter(vimeoUpload.configFilePath, "UTF-8");
 				    writer.println("key="+keyFile);
 			        writer.println("secret="+secretFile);
 			        writer.println("token1="+token1File);
@@ -290,9 +282,7 @@ public configPanel()
 					// TODO Auto-generated catch block
 						e.printStackTrace();
 				}
-				
 		      }
-		    
 		      }
 		      //Clears Everything + the red text
 		      if (event.getSource() == clear)
@@ -307,6 +297,7 @@ public configPanel()
 		    		configvimeoToken2.setBackground(Color.WHITE);
 		    		configFileDefault.setBackground(Color.WHITE);
 		    		configreqHeadLabel.setText(null); 
+		    		
 		      }
 		    
 		      

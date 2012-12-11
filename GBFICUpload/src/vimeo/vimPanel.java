@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -29,23 +30,18 @@ class vimPanel extends JPanel
  //vimPanel	
  private JLabel headLabel,subHeadLabel,reqHeadLabel, summaryLabel, videoFileLabel,videoTitleLabel, videoDateLabel,videoAuthorLabel,VimeoSecretLabel,vimeoToken1Label, vimeotoken2Label; 
  private JButton submit, clear, exit; 
- private JTextField videoTitle,videoAuthor, VimeoSecret, vimeoToken1, vimeoToken2,videoFile,videoDate;
+ private JTextField videoTitle,videoAuthor, VimeoSecret, vimeoToken1, vimeoToken2,videoDate;
  private JTextArea results;
  String[] monthName = {"January", "February","March","April","May","June","July","August","September","October", "November","December"};
 int yearSelect;
 private int year;
- private String configFilePath = "config.ini";
  private Properties props = new Properties();
- private String OS,keyInfo,secretInfo,token1Info,token2Info,titleInfo,videoInfo,dateInfo,AuthorInfo,monthSelect,daySelect; 
+ private String t,f,keyInfo,secretInfo,token1Info,token2Info,titleInfo,videoInfo,dateInfo,AuthorInfo,monthSelect,daySelect; 
  private JComboBox Month,Day,Year;
-
+public JTextField videoFile;
 public Properties upInfo(){
 	try {
-		OS = System.getProperty("os.name").toLowerCase();
-    	if(OS != "windows"){
-    		configFilePath = ".config.ini";
-    	}
-		props.load(new FileReader(configFilePath));
+		props.load(new FileReader(vimeoUpload.configFilePath));
 	} catch (FileNotFoundException e1) {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
@@ -56,6 +52,9 @@ public Properties upInfo(){
 		e.printStackTrace();
 		results.setText("the File is corrupt. Please Re-input all Settings and Save");
 	}
+	//Get File Location
+	t = new configPanel().configFileDefault.getText();
+	videoFile.setText(t);
 	//Set Month Variables
 
 	Calendar cal = Calendar.getInstance();
@@ -64,12 +63,15 @@ public Properties upInfo(){
 	monthSelect = monthName[cal.get(Calendar.MONTH)];
 	daySelect = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
 	String yearSelect = Integer.toString(cal.get(Calendar.YEAR));
-	JOptionPane.showMessageDialog(submit,year, "Message", JOptionPane.WARNING_MESSAGE);
+	
 	 Month.setSelectedItem(monthSelect);
 	 Day.setSelectedItem(daySelect);
-	 Year.setSelectedItem(yearSelect);
-
+	 Year.setSelectedItem(yearSelect); 
  return props;
+}
+public void fileLock(String update){
+	f = update;
+	videoFile.setText(f);
 }
 
 public void fetchKeys(){
@@ -79,7 +81,7 @@ public void fetchKeys(){
     token2Info = props.getProperty("token2");
     videoInfo = videoFile.getText();
 	titleInfo = videoTitle.getText();
-	dateInfo = videoDate.getText() + " " + Day.getSelectedItem()+ ", " + Year.getSelectedItem();
+	dateInfo = Month.getSelectedItem() + " " + Day.getSelectedItem()+ ", " + Year.getSelectedItem();
 	AuthorInfo =  videoAuthor.getText();
 	}
  
@@ -328,10 +330,9 @@ public vimPanel()
     constraints.anchor = GridBagConstraints.CENTER;
     add (results, constraints);
     props = upInfo();
-    
+    videoFile.setForeground(Color.GRAY);
     setBackground (Color.LIGHT_GRAY);
     
-    videoFile.setText(props.getProperty("defaultfile"));
  }
 
 class MyRunnable implements Runnable {     
@@ -390,14 +391,6 @@ class MyRunnable implements Runnable {
       if (event.getSource() == clear)
       {     
     	    
-    	    videoDate.setText("");
-    	    videoTitle.setText("");
-    	    videoFile.setText("");
-    	    videoAuthor.setText("");
-    	    videoTitle.setBackground(Color.WHITE);
-    	    videoFile.setBackground(Color.WHITE);
-    	    videoAuthor.setBackground(Color.WHITE);
-    		reqHeadLabel.setText(null); 
         
       }
       
