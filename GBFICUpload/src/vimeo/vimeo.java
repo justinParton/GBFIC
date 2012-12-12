@@ -39,26 +39,31 @@ import org.xml.sax.InputSource;
     	 fileLocation = file;
      	 vTitle = Title;
      	 vDescription = Descript;
-     	
      	apiKey = vKey;
      	apiSecret = vSecret;
      	apitoken1 = vtoken1; 
      	apitoken2 = vtoken2;
+     	Runtime rt = Runtime.getRuntime();
+     	/*
+     	try {
+			Process pr = rt.exec("ffmpeg -i "+ fileLocation +" -f mp3 -ab 192000 -vn "+ fileLocation +"\\audio.mp3 -loglevel quiet");
+		} catch (IOException e) {
+			new vimPanel().textarea.append("error transcoding");
+		}
+     	*/
       }
 	public String vimeoUpload(String[] args) throws Exception {
-        // Replace these with your own api key and secret
-     
-        String apiKey = "bb5b982d90d89cf2dfce78317eb63446"; //Give your own API Key
-        String apiSecret = "d620a5c1ea8734d4"; //Give your own API Secret
+       
         String vimeoAPIURL = "http://vimeo.com/api/rest/v2";
         service = new ServiceBuilder().provider(VimeoApi.class).apiKey(apiKey).apiSecret(apiSecret).build();
         OAuthRequest request;
         Response response;
         
-        accessToken = new Token("7b5c0e823ca13dc3c94293368379a9dd", "5a205db0c357d320ba004a667a62a86d5d0b87f2"); //Copy the new token you get here
+        accessToken = new Token(apitoken1, apitoken2); //Copy the new token you get here
      
         accessToken = checkToken(vimeoAPIURL, accessToken, service);
         if (accessToken == null) {
+        	resultsPanel.textarea.append("No Access token was Inserted \n");
           return("Please Re-insert Access Token");
         }
      
@@ -74,7 +79,7 @@ import org.xml.sax.InputSource;
         response = signAndSendToVimeo(request, "getTicket", true);
      
         // Get Endpoint and ticket ID
-        ////System.out.println(newline + newline + "We're sending the video for upload!");
+        resultsPanel.textarea.append("We're sending the video for upload!\n");
         Document doc = readXML(response.getBody());
         Element ticketElement = (Element) doc.getDocumentElement().getElementsByTagName("ticket").item(0);
         String endpoint = ticketElement.getAttribute("endpoint");
@@ -84,6 +89,7 @@ import org.xml.sax.InputSource;
         File testUp = new File(fileLocation);
         boolean sendVideo = sendVideo(endpoint, testUp);
         if (!sendVideo) {
+        	resultsPanel.textarea.append("Cannot Connect to Vimeo, please Check Your Internet Connection.\n");
           throw new Exception("Can not connect to Vimeo.");
         }
      
@@ -96,6 +102,7 @@ import org.xml.sax.InputSource;
      
         //Set video info
         setVimeoVideoInfo(completeResponse, service, accessToken, vimeoAPIURL);
+        resultsPanel.textarea.append("The Video has Been Successfully Submitted to Vimeo \n");
         return("The Video Has Been Successfully Submitted to Vimeo");
       }
      
@@ -116,6 +123,7 @@ import org.xml.sax.InputSource;
         boolean first = false;
         while (is.read(bytesPortion, 0, bufferSize) != -1) {
           lastByteOnServer = prepareAndSendByteChunk(endpoint, contentLengthString, lastByteOnServer, bytesPortion, first, 0, maxAttempts);
+          
           if (lastByteOnServer == -1) {
             return false;
           }
@@ -144,12 +152,14 @@ import org.xml.sax.InputSource;
           return -1;
         } else if (attempt > 0) {
           //System.out.println("Attempt number " + attempt + " for video " + "Test Video");
+        	resultsPanel.textarea.append("Attempt number " + attempt + " for video " + "Test Video \n");
         }
         long totalBytesShouldBeOnServer = lastByteOnServer + byteChunk.length;
         String contentRange = lastByteOnServer + "-" + totalBytesShouldBeOnServer;
         long bytesOnServer = sendVideoBytes(endpoint, contentLengthString, "video/mp4", contentRange, byteChunk, first);
         if (bytesOnServer != totalBytesShouldBeOnServer) {
           //System.err.println(bytesOnServer + " (bytesOnServer)" + " != " + totalBytesShouldBeOnServer + " (totalBytesShouldBeOnServer)");
+        	resultsPanel.textarea.append("Total Sent:" +bytesOnServer + "  Expected: " + totalBytesShouldBeOnServer + "\n");
           long remainingBytes = totalBytesShouldBeOnServer - bytesOnServer;
           int beginning = (int) (byteChunk.length - remainingBytes);
           int ending = (int) byteChunk.length;
@@ -244,7 +254,8 @@ import org.xml.sax.InputSource;
           }
           Verifier verifier = new Verifier(code);
           // Trade the Request Token and Verfier for the Access Token
-          //System.out.println("Trading the Request Token for an Access Token...");
+          resultsPanel.textarea.append("Trading the Request Token for an Access Token...");
+          resultsPanel.textarea.append("Trading the Request Token for an Access Token... \n");
           try {
             Token token = service.getAccessToken(requestToken, verifier);
             ////System.out.println(token); //Use this output to copy the token into your code so you don't have to do this over and over.
@@ -286,13 +297,13 @@ import org.xml.sax.InputSource;
         signAndSendToVimeo(request, "setDescription", true);
      
         List<String> videoTags = new ArrayList<String>();
-        videoTags.add("test1");
-        videoTags.add("");
-        videoTags.add("test3");
-        videoTags.add("test4");
-        videoTags.add("test 5");
-        videoTags.add("test-6");
-        videoTags.add("test 7 test 7 test 7 test 7 test 7 test 7 test 7 test 7 test 7 test 7 test 7 test 7 test 7 test 7");
+        videoTags.add("GBFIC");
+        videoTags.add(" ");
+        videoTags.add(" ");
+        videoTags.add(" ");
+        videoTags.add(" ");
+        videoTags.add(" ");
+        videoTags.add(" ");
      
         //Create tags string
         String tags = "";
@@ -327,7 +338,13 @@ import org.xml.sax.InputSource;
                 + "Signing " + description + " request:"
                 + ((printBody && !request.getBodyContents().isEmpty()) ? newline + "\tBody Contents:" + request.getBodyContents() : "")
                 + ((!request.getHeaders().isEmpty()) ? newline + "\tHeaders: " + request.getHeaders() : ""));
+        
+          resultsPanel.textarea.append(newline + newline
+                  + "Signing " + description + " request:"
+                  + ((printBody && !request.getBodyContents().isEmpty()) ? newline + "\tBody Contents:" + request.getBodyContents() : "")
+                  + ((!request.getHeaders().isEmpty()) ? newline + "\tHeaders: " + request.getHeaders() : "\n")); 
         */
+    	  resultsPanel.textarea.append("sending..\n" );
         service.signRequest(accessToken, request);
         printRequest(request, description);
         Response response = request.send();
@@ -342,11 +359,12 @@ import org.xml.sax.InputSource;
        * @param description
        */
       private static void printRequest(OAuthRequest request, String description) {
-        //System.out.println();
-        //System.out.println(description + " >>> Request");
-        //System.out.println("Headers: " + request.getHeaders());
-        //System.out.println("Verb: " + request.getVerb());
-        //System.out.println("Complete URL: " + request.getCompleteUrl());
+    	 resultsPanel.textarea.append("\n");
+    	 resultsPanel.textarea.append("Uploading Segment:\n" );
+    	 // resultsPanel.textarea.append(description + " >>> Request\n");
+    	 resultsPanel.textarea.append("Headers: " + request.getHeaders()+"\n");
+    	 // resultsPanel.textarea.append("Verb: " + request.getVerb()+"\n");
+    	 // resultsPanel.textarea.append("Complete URL: " + request.getCompleteUrl()+"\n");
       }
      
       /**
@@ -356,12 +374,13 @@ import org.xml.sax.InputSource;
        * @param description
        */
       private static void printResponse(Response response, String description, boolean printBody) {
-        //System.out.println();
-        //System.out.println(description + " >>> Response");
-        //System.out.println("Code: " + response.getCode());
-        //System.out.println("Headers: " + response.getHeaders());
+    	  resultsPanel.textarea.append("\n");
+    	  resultsPanel.textarea.append("Uploading Segment:\n");
+       // resultsPanel.textarea.append(description + " >>> Response \n");
+       // resultsPanel.textarea.append("Code: " + response.getCode()+"\n");
+       resultsPanel.textarea.append("Headers: " + response.getHeaders()+"\n");
         if (printBody) {
-          //System.out.println("Body: " + response.getBody());
+          //resultsPanel.textarea.append("Body: " + response.getBody()+"\n");
         }
       }
      

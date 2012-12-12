@@ -273,6 +273,8 @@ public configPanel()
 			        writer.println("token2="+token2File);
 			        writer.println("defaultfile="+fileDefault);
 			        writer.close();
+			        new vimPanel().fileLock("hello");
+			        vimeoUpload.tab.setSelectedIndex(0);
      				} 
 				catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block

@@ -31,7 +31,7 @@ class vimPanel extends JPanel
  private JLabel headLabel,subHeadLabel,reqHeadLabel, summaryLabel, videoFileLabel,videoTitleLabel, videoDateLabel,videoAuthorLabel,VimeoSecretLabel,vimeoToken1Label, vimeotoken2Label; 
  private JButton submit, clear, exit; 
  private JTextField videoTitle,videoAuthor, VimeoSecret, vimeoToken1, vimeoToken2,videoDate;
- private JTextArea results;
+ JTextArea results;
  String[] monthName = {"January", "February","March","April","May","June","July","August","September","October", "November","December"};
 int yearSelect;
 private int year;
@@ -52,9 +52,6 @@ public Properties upInfo(){
 		e.printStackTrace();
 		results.setText("the File is corrupt. Please Re-input all Settings and Save");
 	}
-	//Get File Location
-	t = new configPanel().configFileDefault.getText();
-	videoFile.setText(t);
 	//Set Month Variables
 
 	Calendar cal = Calendar.getInstance();
@@ -79,7 +76,7 @@ public void fetchKeys(){
     secretInfo = props.getProperty("secret");
     token1Info = props.getProperty("token1");
     token2Info = props.getProperty("token2");
-    videoInfo = videoFile.getText();
+    videoInfo = new configPanel().configFileDefault.getText();
 	titleInfo = videoTitle.getText();
 	dateInfo = Month.getSelectedItem() + " " + Day.getSelectedItem()+ ", " + Year.getSelectedItem();
 	AuthorInfo =  videoAuthor.getText();
@@ -93,16 +90,12 @@ public vimPanel()
     subHeadLabel = new JLabel ("Reaching the World For Christ");
     subHeadLabel.setFont(new Font("serif", Font.ITALIC,12));
     reqHeadLabel = new JLabel ("Please Complete the Form to Begin Uploading");
-    reqHeadLabel.setFont(new Font("serif",Font.PLAIN,16));
-    summaryLabel = new JLabel ("Information:              ");
-    summaryLabel.setFont(new Font("serif",Font.PLAIN,16));      
+    reqHeadLabel.setFont(new Font("serif",Font.PLAIN,16));     
     videoFileLabel = new JLabel ("File Location: ");
     videoTitleLabel = new JLabel ("Sermon Title: ");
     videoDateLabel = new JLabel ("Sermon Date: ");
     videoAuthorLabel = new JLabel ("Speaker: ");
-    
-    //Text Box Label
-    results = new JTextArea (3, 35);
+   
 
     //Text Fields
     videoTitle = new JTextField (15); 
@@ -274,23 +267,6 @@ public vimPanel()
     add (Year, constraints);
     
     constraints.gridx = 0;
-    constraints.gridy = 4;
-    constraints.gridwidth = 1;
-    constraints.gridheight = 1;
-    constraints.insets = new Insets (5, 5, 5, 5); 
-    constraints.anchor = GridBagConstraints.EAST;
-    add (videoFileLabel, constraints);
-    
-    constraints.gridx = 1;
-    constraints.gridy = 4;
-    constraints.gridwidth = 1;
-    constraints.gridheight = 1;
-    constraints.insets = new Insets (5, 5, 5, 5); 
-    constraints.anchor = GridBagConstraints.WEST;     
-    add (videoFile, constraints);
-
-    
-    constraints.gridx = 0;
     constraints.gridy = 8;
     constraints.gridwidth = 2;
     constraints.gridheight = 1;
@@ -314,21 +290,6 @@ public vimPanel()
     constraints.anchor = GridBagConstraints.WEST;
     add (exit, constraints);
     
-    constraints.gridx = 0;
-    constraints.gridy = 9;
-    constraints.gridwidth = 2;
-    constraints.gridheight = 1;
-    constraints.insets = new Insets (35, 5, 90, 5); 
-    constraints.anchor = GridBagConstraints.CENTER;
-    add (summaryLabel, constraints);
-    
-    constraints.gridx = 0;
-    constraints.gridy = 9;
-    constraints.gridwidth = 2;
-    constraints.gridheight = 1;
-    constraints.insets = new Insets (35, 5, 5, 5); 
-    constraints.anchor = GridBagConstraints.CENTER;
-    add (results, constraints);
     props = upInfo();
     videoFile.setForeground(Color.GRAY);
     setBackground (Color.LIGHT_GRAY);
@@ -364,10 +325,6 @@ class MyRunnable implements Runnable {
 		    	videoTitle.setBackground(Color.YELLOW);
 		    	errorField = true;
 		    }
-		    if (videoFile.getText().length() == 0){
-		    	videoFile.setBackground(Color.YELLOW);
-		    	errorField = true;
-		    }
 		    if (videoAuthor.getText().length() == 0 ){
 		    	videoAuthor.setBackground(Color.YELLOW);
 		    	errorField = true;
@@ -384,13 +341,16 @@ class MyRunnable implements Runnable {
      	  MyRunnable myRunnable = new MyRunnable(); 
     	  Thread myThread = new Thread(myRunnable);
     	  myThread.start();
+    	  resultsPanel.textarea.setText("The Process has Started");
+    	  vimeoUpload.tab.setSelectedIndex(2);
 		    }
       }
       
       //Clears Everything + the red text
       if (event.getSource() == clear)
       {     
-    	    
+    	  resultsPanel.textarea.setText("The Process has Started");
+    	  vimeoUpload.tab.setSelectedIndex(2); 
         
       }
       

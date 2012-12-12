@@ -21,7 +21,7 @@ public class vimeoUpload{
 	  public static String OS = System.getProperty("os.name"); 
 	  
 	  public static String configFilePath = "config.ini";
-	  JTabbedPane tab;
+	  public static JTabbedPane tab;
 	  
 		  public static void main(String[] args){
 			  if (OS.startsWith("windows")){
@@ -34,7 +34,6 @@ public class vimeoUpload{
 		  public vimeoUpload(){
 			  JFrame frame = new JFrame("GBFIC Broadcast Network");
 			  
-			  JOptionPane.showInputDialog(OS);
 			  tab = new JTabbedPane();
 			  frame.add(tab, BorderLayout.CENTER);
 			  
@@ -45,6 +44,10 @@ public class vimeoUpload{
 			  //Panel tab 2
 			  configPanel panel1 = new configPanel();
 			  tab.add("Settings", panel1);
+			  
+			//Panel tab 2
+			  resultsPanel panel2 = new resultsPanel();
+			  tab.add("Results", panel2);
 			  
 			  //check if config exists. send to index 1 if not.
 			  
