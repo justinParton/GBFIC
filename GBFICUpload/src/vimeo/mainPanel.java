@@ -71,6 +71,10 @@ private int year;
 	 
   return props;
  }
+ public void fileLock(String update){
+	f = update;
+	videoFile.setText(f);
+}
 
 public void fetchKeys(){
 	
