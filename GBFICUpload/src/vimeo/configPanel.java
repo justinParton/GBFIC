@@ -22,17 +22,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import vimeo.vimPanel.MyRunnable;
+import vimeo.mainPanel.MyRunnable;
 @SuppressWarnings({ "unused", "serial" })
 class configPanel extends JPanel
 { 
  //Data declarations 
 	
 	private JButton clear, exit, submit; 
-    private JLabel configheadLabel, configsubHeadLabel, configreqHeadLabel, configVimeoKeyLabel, configVimeoSecretLabel, configvimeoToken1Label, configvimeotoken2Label, configFileDefaultLabel, version; 
-	private JTextField configVimeoKey, configVimeoSecret, configvimeoToken1, configvimeoToken2, configvideoTitle;
+    private JLabel configheadLabel, configsubHeadLabel, configreqHeadLabel, configVimeoKeyLabel, configVimeoSecretLabel, configvimeoToken1Label, configvimeotoken2Label, configFileDefaultLabel, configArchiveLabel, version; 
+	private JTextField configVimeoKey, configVimeoSecret, configvimeoToken1, configvimeoToken2, configvideoTitle,configArchiveDefault;
 	public JTextField configFileDefault;   
-    private String fileDefault;
+    private String fileDefault,archiveDefault;
     
 public configPanel() 
 {
@@ -48,6 +48,7 @@ public configPanel()
 	configvimeoToken1Label = new JLabel ("Token 1: ");
 	configvimeotoken2Label = new JLabel ("Token 2: ");
 	configFileDefaultLabel = new JLabel ("Default Location: ");
+	configArchiveLabel = new JLabel ("Archive Location: ");
 	version = new JLabel ("Version: 1.0");
 
 	//Text Input Variables
@@ -56,6 +57,7 @@ public configPanel()
 	configvimeoToken1 = new JTextField (15);
 	configvimeoToken2 = new JTextField (15);
 	configFileDefault = new JTextField (15);
+	configArchiveDefault = new JTextField (15);
 	Properties props = new Properties();
 	 try {
 			props.load(new FileReader(vimeoUpload.configFilePath));
@@ -64,6 +66,7 @@ public configPanel()
 			 configvimeoToken1.setText(props.getProperty("token1"));
 			 configvimeoToken2.setText(props.getProperty("token2"));
 			 configFileDefault.setText(props.getProperty("defaultfile"));
+			 configArchiveDefault.setText(props.getProperty("archive"));
 	 } catch (FileNotFoundException e1) {
 				e1.printStackTrace();		
 		} catch (IOException e) {
@@ -193,6 +196,22 @@ public configPanel()
 	add (configFileDefault, constraints);
 	
 	constraints.gridx = 0;
+	constraints.gridy = 7;
+	constraints.gridwidth = 1;
+	constraints.gridheight = 1;
+	constraints.insets = new Insets (5, 5, 5, 5); 
+	constraints.anchor = GridBagConstraints.EAST;
+	add (configArchiveLabel, constraints);
+	
+	constraints.gridx = 1;
+	constraints.gridy = 7;
+	constraints.gridwidth = 1;
+	constraints.gridheight = 1;
+	constraints.insets = new Insets (5, 5, 5, 5); 
+	constraints.anchor = GridBagConstraints.WEST;     
+	add (configArchiveDefault, constraints);
+	
+	constraints.gridx = 0;
 	constraints.gridy = 8;
 	constraints.gridwidth = 2;
 	constraints.gridheight = 1;
@@ -231,6 +250,8 @@ public configPanel()
 		      String token2File = configvimeoToken2.getText();
 		      
 		      fileDefault = configFileDefault.getText().replace("\\", "\\\\");
+		      archiveDefault = configArchiveDefault.getText().replace("\\", "\\\\");
+		      
 		      PrintWriter writer;
 		      if (event.getSource() == submit)
 		      {
@@ -256,6 +277,11 @@ public configPanel()
 				    	configFileDefault.setBackground(Color.YELLOW);
 				    	errorField = true;
 				    	}
+				    if (configArchiveDefault.getText().length() == 0 ){
+				    	configArchiveDefault.setBackground(Color.YELLOW);
+				    	errorField = true;
+				    	}
+				    
 				    if(errorField)
 				     { 
 				      configreqHeadLabel.setText("Please Complete the Highlighted Fields."); 
@@ -272,8 +298,9 @@ public configPanel()
 			        writer.println("token1="+token1File);
 			        writer.println("token2="+token2File);
 			        writer.println("defaultfile="+fileDefault);
+			        writer.println("archive="+archiveDefault);
 			        writer.close();
-			        new vimPanel().fileLock("hello");
+			        new mainPanel().fileLock("hello");
 			        vimeoUpload.tab.setSelectedIndex(0);
      				} 
 				catch (FileNotFoundException e) {
@@ -298,6 +325,7 @@ public configPanel()
 		    		configvimeoToken1.setBackground(Color.WHITE);
 		    		configvimeoToken2.setBackground(Color.WHITE);
 		    		configFileDefault.setBackground(Color.WHITE);
+		    		configArchiveDefault.setBackground(Color.WHITE);
 		    		configreqHeadLabel.setText(null); 
 		    		
 		      }

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import vimeo.vimPanel;
+import vimeo.mainPanel;
 
 
 @SuppressWarnings("unused")
@@ -38,7 +38,7 @@ public class vimeoUpload{
 			  frame.add(tab, BorderLayout.CENTER);
 			  
 			    //Panel tab 1
-			  vimPanel panel = new vimPanel();
+			  mainPanel panel = new mainPanel();
 			  tab.add("Upload", panel);
 			  
 			  //Panel tab 2

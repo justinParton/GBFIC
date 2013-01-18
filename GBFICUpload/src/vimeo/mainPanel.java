@@ -51,33 +51,37 @@ private int year;
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-		results.setText("the File is corrupt. Please Re-input all Settings and Save");
+		 resultsPanel.textarea.append("the File is corrupt. Please Re-input all Settings and Save");
 	}
+	
+	
 	//Set Month Variables
-
-	Calendar cal = Calendar.getInstance();
-	year = cal.get(Calendar.YEAR);
-  
-	monthSelect = monthName[cal.get(Calendar.MONTH)];
-	daySelect = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
-	String yearSelect = Integer.toString(cal.get(Calendar.YEAR));
+	 Calendar cal = Calendar.getInstance();
+	 year = cal.get(Calendar.YEAR);
+	 monthSelect = monthName[cal.get(Calendar.MONTH)];
+	 daySelect = Integer.toString(cal.get(Calendar.DAY_OF_MONTH));
+	 String yearSelect = Integer.toString(cal.get(Calendar.YEAR));
 	
 	 Month.setSelectedItem(monthSelect);
 	 Day.setSelectedItem(daySelect);
 	 Year.setSelectedItem(yearSelect); 
+      
+    //display Video File
+	 videoFile.setText(props.getProperty("defaultfile"));
+	 
   return props;
  }
- public void fileLock(String update){
-	f = update;
-	videoFile.setText(f);
-}
 
 public void fetchKeys(){
+	
+	//Config File Information
     keyInfo = props.getProperty("key");
     secretInfo = props.getProperty("secret");
     token1Info = props.getProperty("token1");
     token2Info = props.getProperty("token2");
     videoInfo = new configPanel().configFileDefault.getText();
+    
+    //Main Page Settings
 	titleInfo = videoTitle.getText();
 	dateInfo = Month.getSelectedItem() + " " + Day.getSelectedItem()+ ", " + Year.getSelectedItem();
 	AuthorInfo =  videoAuthor.getText();
@@ -85,7 +89,8 @@ public void fetchKeys(){
  
 public mainPanel() 
  {
-	  //Text Labels
+	
+	//Label Titles
     headLabel = new JLabel ("GBFIC Broadcast Upload System");
     headLabel.setFont(new Font("serif", Font.BOLD, 20));
     subHeadLabel = new JLabel ("Reaching the World For Christ");
@@ -103,7 +108,7 @@ public mainPanel()
     videoFile = new JTextField (15);
     videoAuthor = new JTextField (15); 
     
-    //Buttons variables!
+    //Buttons Titles
     submit = new JButton ("UPLOAD"); 
     clear = new JButton ("CLEAR"); 
     exit = new JButton ("EXIT"); 
@@ -266,6 +271,24 @@ public mainPanel()
     constraints.insets = new Insets (5, 205, 5, 5); 
     constraints.anchor = GridBagConstraints.WEST;
     add (Year, constraints);
+    
+    
+    constraints.gridx = 0;
+    constraints.gridy = 4;
+    constraints.gridwidth = 1;
+    constraints.gridheight = 1;
+    constraints.insets = new Insets (5, 5, 5, 5); 
+    constraints.anchor = GridBagConstraints.EAST;
+    add (videoFileLabel, constraints);
+    
+    constraints.gridx = 1;
+    constraints.gridy = 4;
+    constraints.gridwidth = 1;
+    constraints.gridheight = 1;
+    constraints.insets = new Insets (5, 5, 5, 5); 
+    constraints.anchor = GridBagConstraints.WEST;
+    add (videoFile, constraints);
+    
     
     constraints.gridx = 0;
     constraints.gridy = 8;
