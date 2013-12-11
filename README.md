@@ -13,13 +13,13 @@ The interface has three main functionalities worth highlighting:
 
 
    The Java Interface is broken into three panels:
-   1. Main Panel: 
+   1. Main Panel 
     >Handles video specific metadata inputs (title, Author,etc). upload execution is also performed from this page. Also when the upload begins, the progress bar shows a friendly progressions as the video uploads.The progress bar is built to recieve file chunk verifications that vimeo sends back to the client after each chunk upload. So in essence, the progress bar shows how much data is confirmed to be uploaded.
     
-   2. Configuration Panel: 
+   2. Configuration Panel 
    >Vimeo requires two sets of authentication to allow uploads to a specific account, as such, this page facilitates the storage and placement of the keys into the workflow of the interface. Also included, are the default directory (Usefull if you like automation and always have the file being uploaded in the same place with the same filename), and the Archive directory: if you dont input anything, it will skip the archiving process all together
 
-   3. Results Panel: 
+   3. Results Panel
     >output from the upload process will be displayed on this page. 
       
 h3 2. Advanced functions
