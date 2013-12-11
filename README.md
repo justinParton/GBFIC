@@ -9,6 +9,9 @@ GBFICUpload is a package capable of uploading large mp4 files to vimeo through a
 The interface has three main functionalities worth highlighting:
 
 h3 1. Ease of Use
+-----------------
+
+
    The Java Interface is broken into three panels:
     h5 Main Panel: 
     Handles video specific metadata inputs (title, Author,etc). upload execution is also performed from this page. Also when the upload begins, the progress bar shows a friendly progressions as the video uploads.The progress bar is built to recieve file chunk verifications that vimeo sends back to the client after each chunk upload. So in essence, the progress bar shows how much data is confirmed to be uploaded.
