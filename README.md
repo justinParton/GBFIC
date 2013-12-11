@@ -1,12 +1,7 @@
 GBFIC
 =====
 
-Uploads a video to Vimeo using the supplied keys and configuration options.
-
-
-GBFICUpload is a package capable of uploading large mp4 files to vimeo through a java interface. 
-
-The interface has three main functionalities worth highlighting:
+Uploads a video to Vimeo using the supplied keys and configuration options.GBFICUpload is a package capable of uploading large mp4 files to vimeo through a java interface. The interface has three main functionalities worth highlighting:
 
 1. Ease of Use
 -----------------
