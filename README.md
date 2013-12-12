@@ -20,7 +20,7 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
 h3 2. Advanced functions
 ------------------------
    
-   1. Timer: 
+   1. Submission Timer: 
    >The timer is built into the application that auto submits after a designated time period. The reason for this was that i often have systems automated because im not always in the location they are ( I live 90 miles from the company headquarters). Settings for this will be found on the Configuration Panel
 
    2. Video Archiving: 
