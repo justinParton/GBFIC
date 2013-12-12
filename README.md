@@ -6,7 +6,7 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
 ----------------
 <dl>
    <dt>Setup</dt>
-   <dd>Eclipse Compiling: Export the eclipse project as a runnable jar from <em>File > Export</em> then choose *Java > Runnable Jar* ></dd>
+   <dd>Eclipse Compiling: Export the eclipse project as a runnable jar from <strong>File > Export</strong> then choose <strong>Java > Runnable Jar</strong> ></dd>
 </dl>
 2. Panel Breakdown
 -----------------
