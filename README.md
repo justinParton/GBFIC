@@ -10,7 +10,7 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
        2. Run the program from its saved location. The configuration panel will be selected. The Token and Keys are required which can be found here: https://developer.vimeo.com/apps<br/>
        3. Fill in the archive location (drag and droppable)<br />
        4. Fill in the default location if automated(drag and droppable)<br />
-       5. Save the Configuration, Close and Re-open the application for changes to take effect<br /><br />
+       5. Save the Configuration, Close and Re-open the application for changes to take effect<br />
        
       <em><strong>NOTE:</strong></em> Dragging the folder into the input field will auto populate the location to that folder</strong></em>
 </dd>
