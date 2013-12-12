@@ -2,10 +2,13 @@ GBFIC
 =====
 
 Uploads a video to Vimeo using the supplied keys and configuration options.GBFICUpload is a package capable of uploading large mp4 files to vimeo through a java interface. The interface has three main functionalities worth highlighting:
-
 1. Usage
+----------------
+<dl>
+   <dt>Setup</dt>
+   <dd>Eclipse Compiling: Export the eclipse project as a runnable jar from **File > Export** then choose **Java > Runnable Jar** > ></dd>
+2. Panel Breakdown
 -----------------
-   The Interface is divided into three panels:
 <dl>
   <dt>Main Panel</dt>
     <dd>Handles video specific metadata inputs (title, author,etc).Upload execution is also performed from this page.Also when the upload begins, the progress bar shows a friendly progressions as the video uploads.The progress bar is built to recieve file chunk verifications that vimeo sends back to the client after each chunk upload. So in essence, the progress bar shows how much data is confirmed to be uploaded.</dd>
@@ -15,7 +18,7 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
     <dd>Output from the upload process will be displayed on this page. </dd>
       
 </dl>
-2. Advanced functions
+3. Advanced functions
 ------------------------
 <dl>
    <dt>Submission Timer</dt> 
@@ -30,7 +33,7 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
    <dt>Vimeo Upload</dt> 
    <dd>Obviously I had to put in that the vimeo upload is an advanced function. it uses http stream upload instead of posting, its just better in the long run especially since v3 of the api will not have POST implementation (rumor).</dd>
 </dl>
-3. Error Handling
+4. Error Handling
 ------------------------
 <dl>
    <dt>Console Output</dt> 
