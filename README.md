@@ -8,7 +8,7 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
    <dt>Setup</dt>
    <dd>1. Eclipse Compiling: Export the eclipse project as a runnable jar from <strong>File > Export</strong> then choose <strong>Java > Runnable Jar</strong>.<br />
        2. Run the program from its saved location. The configuration panel will be selected. The Token and Keys are required which can be found here: https://developer.vimeo.com/apps<br/>
-       3. fill in the archive location
+       3. fill in the archive location<br />
        4. default location (if Automated)
 </dd>
 </dl>
