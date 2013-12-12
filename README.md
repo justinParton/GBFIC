@@ -6,7 +6,8 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
 1. Usage
 -----------------
 
-   The Java Interface is broken into three panels:
+   The Interface is divided into three panels:
+   
    1. Main Panel 
     >Handles video specific metadata inputs (title, author,etc).Upload execution is also performed from this page.Also when the upload begins, the progress bar shows a friendly progressions as the video uploads.The progress bar is built to recieve file chunk verifications that vimeo sends back to the client after each chunk upload. So in essence, the progress bar shows how much data is confirmed to be uploaded.
     
@@ -18,6 +19,7 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
       
 h3 2. Advanced functions
 ------------------------
+   
   
 h3 3. Error Handling
 --------------------
