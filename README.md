@@ -12,7 +12,7 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
        4. Fill in the default location if automated(drag and droppable)<br />
        5. Save the Configuration, Close and Re-open the application for changes to take effect<br /><br />
        
-      <em><strong>**NOTE:</strong></em> Dragging the folder into the input field will auto populate the location to that folder</strong></em>
+      <em><strong>NOTE:</strong></em> Dragging the folder into the input field will auto populate the location to that folder</strong></em>
 </dd>
 </dl>
 <dl>
