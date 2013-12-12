@@ -32,5 +32,11 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
    4. Vimeo Upload: 
    >Obviously I had to put in that the vimeo upload is an advanced function. it uses http stream upload instead of posting, its just better in the long run especially since v3 of the api will not have POST implementation (rumor).
    
-h3 3. Error Handling
+3. Error Handling
 --------------------
+   1. Console Output 
+   >By Default, submission output is generated on the results panel.
+   2. 
+   >Text fields will notify the user of their requirements upon submission if those are not met.
+   3. Config Fields
+   >The Config Panel's input fields are stored in java's preference manager, meaning they are stored on the computer, seperate from the program. This was chosen in favor of other methods becuase it used standard built in java methods that didnt require file creation techniques.
