@@ -17,7 +17,7 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
    3. Results Panel
     >Output from the upload process will be displayed on this page. 
       
-h3 2. Advanced functions
+2. Advanced functions
 ------------------------
    
    1. Submission Timer: 
