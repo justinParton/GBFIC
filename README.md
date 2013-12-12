@@ -29,7 +29,8 @@ h3 2. Advanced functions
    3.
    >MPEG Layer 3: WHEN a user enables archiving, they have the ability to auto create an mp3 that is store in the archive directory. Creation occurs before before upload, but after date folder creation
 
-   5. Vimeo Upload: obviously i had to put in that the vimeo upload is an advanced function. it uses http stream upload instead of posting, its just better in the long run especially since v3 of the api will not have POST implementation (rumor).
+   5. 
+   >Vimeo Upload: obviously i had to put in that the vimeo upload is an advanced function. it uses http stream upload instead of posting, its just better in the long run especially since v3 of the api will not have POST implementation (rumor).
    
 h3 3. Error Handling
 --------------------
