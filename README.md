@@ -69,6 +69,5 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
 ------------------------
 <dl>
    <dt>Assistance Required?</dt> 
-   <dd>If you have a question/concern: justin.parton[at]gmail.com<br/>
-       Or go here ______________</dd>
+   <dd>If you have a question/concern: post an issue to the project,<br /> or email at justin.parton[at]gmail.com</dd>
 </dl>
