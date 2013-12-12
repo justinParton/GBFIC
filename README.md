@@ -49,6 +49,8 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
 
    <dt>Vimeo Upload</dt> 
    <dd>Obviously I had to put in that the vimeo upload is an advanced function. it uses http stream upload instead of posting, its just better in the long run especially since v3 of the api will not have POST implementation (rumor).</dd>
+   <dt>Drag and Drop</dt> 
+   <dd>All text input fields are drag and drop capable giving you the ability to just click and drag the target folder, or the mp4 to the text field.</dd>
 </dl>
 4. Error Handling
 ------------------------
