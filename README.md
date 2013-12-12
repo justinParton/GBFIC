@@ -18,25 +18,27 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
 2. Advanced functions
 ------------------------
 <dl>
-   <dd>Submission Timer</dd> 
-   >The timer is built into the application that auto submits after a designated time period. The reason for this was that i often have systems automated because im not always in the location they are ( I live 90 miles from the company headquarters). Settings for this will be found on the Configuration Panel
+   <dt>Submission Timer</dt> 
+   <dd>The timer is built into the application that auto submits after a designated time period. The reason for this was that i often have systems automated because im not always in the location they are ( I live 90 miles from the company headquarters). Settings for this will be found on the Configuration Panel</dd>
 
-   <dd>Video Archiving</dd>
-   >When enabled, MP4 files (also mp3 if enabled, see below) will be stored in the desired directory, in a folder with the current date. 
+   <dt>Video Archiving</dt>
+  <dd>When enabled, MP4 files (also mp3 if enabled, see below) will be stored in the desired directory, in a folder with the current date.</dd> 
 
-   3. MPEG Layer 3: 
-   >When a user enables archiving, they have the ability to auto create an mp3 that is store in the archive directory. Creation occurs before before upload, but after date folder creation
+   <dt>MPEG Layer 3</dt> 
+   <dd>When a user enables archiving, they have the ability to auto create an mp3 that is store in the archive directory. Creation occurs before before upload, but after date folder creation</dd>
 
-   4. Vimeo Upload: 
-   >Obviously I had to put in that the vimeo upload is an advanced function. it uses http stream upload instead of posting, its just better in the long run especially since v3 of the api will not have POST implementation (rumor).
-   
+   <dt>Vimeo Upload</dt> 
+   <dd>Obviously I had to put in that the vimeo upload is an advanced function. it uses http stream upload instead of posting, its just better in the long run especially since v3 of the api will not have POST implementation (rumor).</dd>
+ </dl>  
 3. Error Handling
 --------------------
-   1. Console Output 
-   >By Default, submission output is generated on the results panel.
+<dl>
+   <dt>Console Output</dt> 
+   <dd>By Default, submission output is generated on the results panel.</dd>
    
-   2. Required Fields
-   >Text fields will notify the user of their requirements upon submission if those are not met.
+   <dt>Required Fields</dt>
+   <dd>Text fields will notify the user of their requirements upon submission if those are not met.</dd>
    
-   3. Config Fields
-   >The Config Panel's input fields are stored in java's preference manager, meaning they are stored on the computer, seperate from the program. This was chosen in favor of other methods becuase it used standard built in java methods that didnt require file creation techniques.
+   <dt>Config Fields</dt>
+   <dd>The Config Panel's input fields are stored in java's preference manager, meaning they are stored on the computer, seperate from the program. This was chosen in favor of other methods becuase it used standard built in java methods that didnt require file creation techniques.</dd>
+</dl>
