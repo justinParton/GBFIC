@@ -10,6 +10,7 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
        2. Run the program from its saved location. The configuration panel will be selected. The Token and Keys are required which can be found here: https://developer.vimeo.com/apps<br/>
        3. Fill in the archive location<br />
        4. Default location (if Automated)<br /><br />
+       5. Save the Configuration, Close and Re-open the application for changes to take effect<br /><br />
        
       <em><strong>**NOTE:</strong></em> Dragging the folder into the input field will auto populate the location to that folder</strong></em>
 </dd>
@@ -17,11 +18,9 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
 <dl>
    <dt>Execution</dt>
    <dd>
-      <em><strong>NOTE:</strong> If Configuration is filled, subsequent startups will autoselect the Main Panel</em><br/>
-       1..<br />
-       2. Run the program from its saved location. The configuration panel will be selected. The Token and Keys are required which can be found here: https://developer.vimeo.com/apps<br/>
-       3. Fill in the archive location<br />
-       4. Default location (if Automated)<br /><br />
+       1. With the main panel Selected, fill out the Artist,Speaker, Date, and mp4 location if different than Default location (drag and droppable).
+       2. Submit, and watch the progress bar<br/>
+       <em>Alternatively: </em> The results page will show more detailes about the upload (if thats your thing).<br/><br/>
        
       <em><strong>**NOTE:</strong></em> Dragging the folder into the input field will auto populate the location to that folder</strong></em>
 </dd>
