@@ -30,8 +30,10 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
    <dt>Vimeo Upload</dt> 
    <dd>Obviously I had to put in that the vimeo upload is an advanced function. it uses http stream upload instead of posting, its just better in the long run especially since v3 of the api will not have POST implementation (rumor).</dd>
  </dl>  
+ 
 3. Error Handling
 --------------------
+
 <dl>
    <dt>Console Output</dt> 
    <dd>By Default, submission output is generated on the results panel.</dd>
