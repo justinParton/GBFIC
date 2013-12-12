@@ -23,7 +23,7 @@ h3 2. Advanced functions
    1. Timer: 
    >The timer is built into the application that auto submits after a designated time period. The reason for this was that i often have systems automated because im not always in the location they are ( I live 90 miles from the company headquarters). Settings for this will be found on the Configuration Panel
 
-   2. Archiving: 
+   2. Video Archiving: 
    >When enabled, MP4 files (also mp3 if enabled, see below) will be stored in the desired directory, in a folder with the current date. 
 
    3. MPEG Layer 3: 
