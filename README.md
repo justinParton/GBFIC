@@ -18,7 +18,7 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
 <dl>
    <dt>Execution</dt>
    <dd>
-       1. With the main panel Selected, fill out the Artist,Speaker, Date, and mp4 location if different than Default location (drag and droppable).
+       1. With the main panel Selected, fill out the Artist,Speaker, Date, and mp4 location if different than Default location (drag and droppable).<br />
        2. Submit, and watch the progress bar<br/>
        <em>Alternatively: </em> The results page will show more detailes about the upload (if thats your thing).<br/><br/>
        
