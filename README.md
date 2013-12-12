@@ -65,7 +65,7 @@ Uploads a video to Vimeo using the supplied keys and configuration options.GBFIC
    <dd>The Config Panel's input fields are stored in java's preference manager, meaning they are stored on the computer, seperate from the program. This was chosen in favor of other methods becuase it used standard built in java methods that didnt require file creation techniques.</dd>
 </dl>
 
-4. FAQ
+5. FAQ
 ------------------------
 <dl>
    <dt>Assistance Required?</dt> 
