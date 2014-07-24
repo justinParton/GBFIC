@@ -23,6 +23,5 @@ public class fileBytes {
 			i++;
 		}
 		is.close();
-
 	}
 }
